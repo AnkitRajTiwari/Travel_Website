@@ -1,78 +1,151 @@
-# Travel_Website
+ Raahi — Travel Blog Platform
 🔗 **Live Website:** [Raahi - Visit Here](https://raahi-orpin.vercel.app/)
 
- # 🌍 Raahi - Travel Blogging Website
+**Raahi** is a full-stack travel blogging platform where users can share their travel experiences, explore posts from others, and discover destinations through personal stories. It features authentication, search filtering, image uploads, and dynamic blog pages.
 
-# Raahi is a dynamic travel blogging platform where users can explore, post, and read travel blogs from around the world. The platform supports user authentication, blog creation with image uploads, and filtering blogs by country and state.
+---
 
- # 🚀 Features
-# 🔐 Authentication with Clerk (Signup, Login, and User sessions)
+## ✨ Features
 
-# 📸 Image Upload with Cloudinary, using Streamifier to convert buffer into a stream for efficient uploads
+* 🔐 **Authentication** using [Clerk](https://clerk.dev) (frontend-only auth)
+* 📄 **Post blogs** with title, subtitle, image, pros, cons, suggestions, etc.
+* 🗺️ **Country + State filtering** using `country-state-city`
+* 🔍 **Search blogs** based on location
+* 🖼️ **Image uploads** via Cloudinary (Multer + memory stream)
+* 📄 **Dynamic blog detail pages**
+* 🧱 **Explore & filter blogs** (Find Blogs page)
+* 💼 **My Blogs**: view blogs posted by the logged-in user
+* 💬 **Toasts** for success/error feedback using `react-hot-toast`
+* 📱 Responsive UI built with TailwindCSS
 
-# 🌍 Find Blogs by selecting Country and State using country-state-city NPM package
+---
 
-# 📝 Post Blogs with titles, descriptions, categories, and images
+## 🛠️ Tech Stack
 
-# 📚 User Blogs Dashboard to view and manage personal blogs
+### Frontend
 
-# 🔍 Dynamic Blog Details Page for each blog
+* **React** (Vite)
+* **Tailwind CSS**
+* **React Router**
+* **Clerk** for auth
+* **Axios** for API requests
+* **React Hot Toast** for notifications
 
-# 🏠 Main Homepage fetches and displays the latest 8 blogs
+### Backend
 
-# 🎨 Fully responsive Tailwind CSS styling
+* **Express.js**
+* **MongoDB** (via Mongoose)
+* **Cloudinary** for image hosting
+* **Multer** with memory storage + `streamifier` for Cloudinary uploads
+* **CORS**, **dotenv**
 
-# 📂 Folder Structure (Brief)
-# bash
+---
 
-# /client  → Frontend (React + Tailwind)
-# /server  → Backend (Node + Express + MongoDB)
-# .env      → Environment variables
+## 🚀 Getting Started
 
- # 🔧 How to Run Locally
-# Clone the repository
+### 1. Clone the repository
 
-# bash
-# Copy
-# Edit
-# git clone https://github.com/your-username/raahi.git
-# cd raahi
-# Install dependencies
+```bash
+git clone https://github.com/yourusername/raahi.git
+cd raahi
+```
 
-# Backend:
+---
 
-# bash
-# Copy
-# Edit
-# cd server
-# npm install
-# Frontend:
+## 🌐 Frontend Setup (`raahi-fr/`)
 
-#  bash
-# Copy
-# Edit
-# cd client
-# npm install
-# Run the app
+```bash
+cd raahi-fr
+npm install
+```
 
-# Backend:
+### 📁 `.env` file for Frontend
 
-# bash
-# Copy
-# Edit
-# npm start
-# Frontend:
+Create a `.env` file inside `raahi-fr/`:
 
-# bash
-# Copy
-# Edit
-# npm run dev
-# ✅ The app should be running at:
+```env
+VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+VITE_API_URL=http://localhost:5000/api
+```
 
-# Frontend: http://localhost:5173
+### 🦦 Run Frontend Locally
 
-# Backend: http://localhost:5000
+```bash
+npm run dev
+```
 
-# 🌟 Tagline
-# "Discover More, Travel Far"
+---
+
+## 🔧 Backend Setup (`raahi-back/`)
+
+```bash
+cd raahi-back
+npm install
+```
+
+### 📁 `.env` file for Backend
+
+Create a `.env` file inside `raahi-back/`:
+
+```env
+MONGO_URI=your_mongodb_connection_string
+PORT=5000
+
+CLOUDINARY_CLOUD_NAME=your_cloudinary_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+```
+
+> You can get Cloudinary keys from your Cloudinary dashboard.
+
+### 🦦 Run Backend Locally
+
+```bash
+npm run dev
+```
+
+---
+
+## 🔗 Folder Structure
+
+```
+raahi-fr/
+🕛── src/
+    ├── components/
+    ├── pages/
+    ├── util/api.js
+    └── App.jsx
+
+raahi-back/
+🕛── controllers/
+    ├── routes/
+    ├── models/
+    ├── config/
+    └── index.js
+```
+
+---
+
+## ⚙️ Deployment Notes
+
+* ✅ Vercel: add rewrite rule for SPA fallback in `vercel.json`:
+
+```json
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
+```
+
+* ✅ Render (Backend): expose `/api` routes, enable CORS, and allow access from frontend URL.
+
+---
+
+## 🤛 Contributing
+
+Feel free to fork, open issues, or submit PRs if you'd like to improve Raahi!
+
+---
+
 
