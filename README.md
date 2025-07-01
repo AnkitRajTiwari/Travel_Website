@@ -34,10 +34,9 @@
 ### Backend
 
 * **Express.js**
-* **MongoDB** (via Mongoose)
-* **Cloudinary** for image hosting
-* **Multer** with memory storage + `streamifier` for Cloudinary uploads
-* **CORS**, **dotenv**
+* **MongoDB** 
+* **Node.js** 
+
 
 ---
 
